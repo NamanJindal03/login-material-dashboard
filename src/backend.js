@@ -1,2 +1,2 @@
-const API = 'http://zjrrl.mocklab.io/';
+const API = 'http://zjrrl.mocklab.io';
 export default API;
