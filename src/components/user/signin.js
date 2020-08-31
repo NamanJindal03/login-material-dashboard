@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import { Redirect} from 'react-router-dom'
 import '../../index.css';
-
+import Navbar from '../core/navbar'
 import {signin} from './user_logic'
 const Signin = () =>{
     const [values, setValues] = useState({
@@ -40,8 +39,6 @@ const Signin = () =>{
             })
             .catch(err=>{
                 setValues({...values, error: err, loading: false})
-                // console.log("signin request failed");
-                // console.log(err);
             })
     }
     const performRedirect = () =>{
@@ -95,6 +92,7 @@ const Signin = () =>{
     }
     return(
         <>
+            <Navbar/>
             {loadingMessage()}
             {signInForm()}
             {performRedirect()}
