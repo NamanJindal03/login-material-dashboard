@@ -1,5 +1,7 @@
 import API from "../../backend"
+
 export const signin = user =>{
+    //calling the login api
     return fetch (`${API}/login`,{
         method: "POST",
         headers:{
@@ -9,6 +11,7 @@ export const signin = user =>{
         body: JSON.stringify(user)
     })
     .then(response =>{
+        //response.json() returns another promise
         return response.json();
     })
     .catch(err =>{

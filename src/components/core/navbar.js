@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
+//assigns green to active tab
 const currentTab = (history, path ) =>{
     if(history.location.pathname === path ){
         return {color: "#2ecc72"}

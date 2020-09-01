@@ -12,9 +12,12 @@ const Signin = () =>{
     })
     const {email, password, error, loading, didRedirect} = values;
 
+    //sets state on change of value in the fields
     const handleChange = name => event =>{
         setValues({...values, error:false, [name]:event.target.value})
     }
+
+    //displays error on the screen if error state is set
     const errorMessage = () => (
         <div className="row">
             <div className="col-md-8 offset-sm-2 text-left">
@@ -22,14 +25,19 @@ const Signin = () =>{
             </div>
         </div>
     )
+    //executed when the login form is submitted
     const onSubmit = event => {
         event.preventDefault();
+        //sets loading state to true, error to false
         setValues({...values, error: false, loading: true})
         signin({email, password})
             .then(data => {
+                //if error is present, sets error
                 if(data.error){
                     setValues({...values, error: data.error, loading: false})
-                }else{   
+                }
+                //succesful login
+                else{   
                     setValues({
                         ...values,
                         didRedirect:true
@@ -41,6 +49,8 @@ const Signin = () =>{
                 setValues({...values, error: err, loading: false})
             })
     }
+
+    //performs redirect on succesfull login
     const performRedirect = () =>{
         if(didRedirect){
             //return <Redirect to ="https://www.google.com" />
@@ -57,6 +67,7 @@ const Signin = () =>{
             )
         )
     }
+    //ui of signin form
     const signInForm = () =>{
         return(
             
